@@ -10,7 +10,7 @@ namespace rose
             var configOption = new Option<FileInfo?>(
             name: "--config",
             description: "The config file to use",
-            getDefaultValue: ()=> new FileInfo(@"c:\Users\flare\Desktop\mygit\rose\client\rose\config.json"));
+            getDefaultValue: ()=> new FileInfo(@".\config.json"));
             rootCommand.AddGlobalOption(configOption);
 
             var listCommand = new Command(name:"list", description:"list all the available programs");

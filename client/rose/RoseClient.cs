@@ -6,8 +6,8 @@ namespace rose
 {
     public struct ProgramPair
     {
-        public string displayName;
-        public string path;
+        public string DisplayName;
+        public string Path;
     }
     public struct Config
     {
@@ -36,8 +36,17 @@ namespace rose
                 string? result = this.GetTargetPath(possibleProgram);
                 if(result != null)
                 {
-                    availablePrograms.Add(possibleProgram);
+                    if(System.IO.Path.GetExtension(result).ToLower() == ".exe")
+                    {
+                        availablePrograms.Add(possibleProgram);
+                    }
                 }
+            }
+
+            // Add on the custom programs as well
+            foreach(ProgramPair custProgram in this.config.customPrograms)
+            {
+                availablePrograms.Add(custProgram.DisplayName);
             }
             return availablePrograms;
         }
@@ -101,10 +110,18 @@ namespace rose
 
         private string? GetTargetPath(string lnkPath)
         {
-            string filenameOnly = System.IO.Path.GetFileName(lnkPath);
+            // Handle custom programs
+            foreach(ProgramPair programPair in this.config.customPrograms)
+            {
+                if(lnkPath == programPair.DisplayName)
+                {
+                    return programPair.Path;
+                }
+            }
 
             // Due to limitations with shell32 it normally needs to run as administrator if pointed
             // to a shortcut in C:\ProgramData. Therefore copy to temp folder so don't need to run as admin.
+            string filenameOnly = System.IO.Path.GetFileName(lnkPath);
             string tempFolder = System.IO.Path.GetTempPath();
             string tempFilePath = $"{tempFolder}{filenameOnly}";
             File.Copy(lnkPath, tempFilePath, true);

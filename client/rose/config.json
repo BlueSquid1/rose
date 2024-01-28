@@ -1,6 +1,6 @@
 {
-    "serverIpAddress": "0.0.0.0",
-    "addedPrograms": [
-        {"File Explorer" : "C:\\Windows\\explorer.exe"}
+    "serverIpAddress":"0.0.0.0",
+    "customPrograms":[
+        {"DisplayName":"File Explorer","Path":"C:\\Windows\\explorer.exe"}
     ]
 }

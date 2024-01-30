@@ -6,11 +6,13 @@ namespace rose
     {
         static async Task<int> Main(string[] args)
         {
+            string binaryDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
             var rootCommand = new RootCommand("ROSE - RDP Over SSH Executor (ROSE) starts a remoteapp when ssh to a windows computer.");
             var configOption = new Option<FileInfo?>(
             name: "--config",
             description: "The config file to use",
-            getDefaultValue: ()=> new FileInfo(@".\config.json"));
+            getDefaultValue: ()=> new FileInfo($"{binaryDirectory}\\config.json"));
             rootCommand.AddGlobalOption(configOption);
 
             var listCommand = new Command(name:"list", description:"list all the available programs");

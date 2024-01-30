@@ -1,6 +1,11 @@
 using Microsoft.Win32;
 using Shell32;
 using Newtonsoft.Json;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
+
 
 namespace rose
 {
@@ -14,6 +19,11 @@ namespace rose
         public string serverIpAddress;
         public List<ProgramPair> customPrograms;
         
+    }
+
+    public struct RdpRequest
+    {
+        public string command;
     }
     class RoseClient
     {
@@ -185,10 +195,21 @@ namespace rose
             throw new Exception($"can't find program: {targetName}");
         }
 
-        private void SendOpenRequest(string targetBinPath, string ipAddress)
+        private async void SendOpenRequest(string targetBinPath, string ipAddress)
         {
-            Console.WriteLine(targetBinPath);
-            Console.WriteLine(ipAddress);
+            RdpRequest request = new RdpRequest
+            {
+                command = targetBinPath
+            };
+            string requestBody = JsonConvert.SerializeObject(request);
+
+            StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
+
+            Console.WriteLine("senting message");
+            HttpClient client = new HttpClient();
+            var response = client.PostAsync($"http://{ipAddress}/request", httpContent).Result;
+            Console.WriteLine("sent message");
+            Console.WriteLine(response.ToString());
         }
     }
 }

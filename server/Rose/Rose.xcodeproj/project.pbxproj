@@ -12,6 +12,7 @@
 		03A483A72BA15DB1000A28C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A483A62BA15DB1000A28C5 /* Assets.xcassets */; };
 		03A483AA2BA15DB1000A28C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A483A92BA15DB1000A28C5 /* Preview Assets.xcassets */; };
 		03A483B32BA15EE2000A28C5 /* RdpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483B22BA15EE2000A28C5 /* RdpRequest.swift */; };
+		03A483B62BA1723C000A28C5 /* HTTPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483B52BA1723C000A28C5 /* HTTPServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		03A483A92BA15DB1000A28C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03A483AB2BA15DB1000A28C5 /* Rose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rose.entitlements; sourceTree = "<group>"; };
 		03A483B22BA15EE2000A28C5 /* RdpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RdpRequest.swift; sourceTree = "<group>"; };
+		03A483B52BA1723C000A28C5 /* HTTPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		03A483A12BA15DAF000A28C5 /* Rose */ = {
 			isa = PBXGroup;
 			children = (
+				03A483B42BA17227000A28C5 /* Services */,
 				03A483B12BA15EA3000A28C5 /* Models */,
 				03A483A22BA15DAF000A28C5 /* RoseApp.swift */,
 				03A483A42BA15DAF000A28C5 /* ContentView.swift */,
@@ -78,6 +81,14 @@
 				03A483B22BA15EE2000A28C5 /* RdpRequest.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		03A483B42BA17227000A28C5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				03A483B52BA1723C000A28C5 /* HTTPServer.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 				03A483A52BA15DAF000A28C5 /* ContentView.swift in Sources */,
 				03A483A32BA15DAF000A28C5 /* RoseApp.swift in Sources */,
 				03A483B32BA15EE2000A28C5 /* RdpRequest.swift in Sources */,
+				03A483B62BA1723C000A28C5 /* HTTPServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +303,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,6 +331,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -20,7 +20,7 @@ namespace rose
         public List<ProgramPair> customPrograms;
         
     }
-    
+
     class RoseClient
     {
         private Config config {get; init;}

@@ -1,5 +1,8 @@
-[Serializable]
-public struct RdpRequest
+namespace rose
 {
-    public string Command { get; set; }
+    [Serializable]
+    public struct RdpRequest
+    {
+        public string Command { get; set; }
+    }
 }

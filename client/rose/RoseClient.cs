@@ -20,11 +20,7 @@ namespace rose
         public List<ProgramPair> customPrograms;
         
     }
-
-    public struct RdpRequest
-    {
-        public string command;
-    }
+    
     class RoseClient
     {
         private Config config {get; init;}
@@ -107,7 +103,7 @@ namespace rose
             object? keyValue = key.GetValue("fAllowUnlistedRemotePrograms");
             if(keyValue == null)
             {
-                throw new Exception(@"can't find key: fAllowUnlistedRemotePrograms");
+                throw new Exception(@"new to create key: SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms and set it to 1");
             }
 
             if (keyValue.ToString() != "1")
@@ -199,13 +195,13 @@ namespace rose
         {
             RdpRequest request = new RdpRequest
             {
-                command = targetBinPath
+                Command = targetBinPath
             };
             string requestBody = JsonConvert.SerializeObject(request);
 
             StringContent httpContent = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
 
-            Console.WriteLine("senting message");
+            Console.WriteLine("sending message");
             HttpClient client = new HttpClient();
             var response = client.PostAsync($"http://{ipAddress}/request", httpContent).Result;
             Console.WriteLine("sent message");

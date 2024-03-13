@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "components": [
+    "Microsoft.VisualStudio.Component.Roslyn.Compiler",
+    "Microsoft.Component.MSBuild",
+    "Microsoft.VisualStudio.Component.CoreBuildTools",
+    "Microsoft.VisualStudio.Workload.MSBuildTools",
+    "Microsoft.NetCore.Component.Runtime.8.0",
+    "Microsoft.NetCore.Component.SDK",
+    "Microsoft.Net.Component.4.7.2.SDK"
+  ],
+  "extensions": []
+}

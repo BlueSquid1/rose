@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036A97162BA1BA410031281E /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 036A97152BA1BA410031281E /* Swifter */; };
+		036A97182BA1BA410031281E /* Example in Frameworks */ = {isa = PBXBuildFile; productRef = 036A97172BA1BA410031281E /* Example */; };
 		03A483A32BA15DAF000A28C5 /* RoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483A22BA15DAF000A28C5 /* RoseApp.swift */; };
 		03A483A52BA15DAF000A28C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483A42BA15DAF000A28C5 /* ContentView.swift */; };
 		03A483A72BA15DB1000A28C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A483A62BA15DB1000A28C5 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036A97162BA1BA410031281E /* Swifter in Frameworks */,
+				036A97182BA1BA410031281E /* Example in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +111,10 @@
 			dependencies = (
 			);
 			name = Rose;
+			packageProductDependencies = (
+				036A97152BA1BA410031281E /* Swifter */,
+				036A97172BA1BA410031281E /* Example */,
+			);
 			productName = Rose;
 			productReference = 03A4839F2BA15DAF000A28C5 /* Rose.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 03A483962BA15DAF000A28C5;
+			packageReferences = (
+				036A97142BA1BA400031281E /* XCRemoteSwiftPackageReference "swifter" */,
+			);
 			productRefGroup = 03A483A02BA15DAF000A28C5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -367,6 +378,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		036A97142BA1BA400031281E /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		036A97152BA1BA410031281E /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 036A97142BA1BA400031281E /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+		036A97172BA1BA410031281E /* Example */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 036A97142BA1BA400031281E /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Example;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 03A483972BA15DAF000A28C5 /* Project object */;
 }

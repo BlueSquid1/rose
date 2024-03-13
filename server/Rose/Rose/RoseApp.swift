@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+import Swifter
+import Dispatch
+
 @main
 struct RoseApp: App {
     
@@ -23,10 +26,21 @@ class AppDelegate : NSObject, NSApplicationDelegate, ObservableObject {
     private var statusItem: NSStatusItem!
     private var popover: NSPopover!
     
+    func startWebServer() {
+        let server = HttpServer()
+        server["/hello"] = { .ok(.htmlBody("You asked for \($0)"))  }
+        do{
+            try server.start(9080, forceIPv4: true)
+            print("Server has started ( port = \(try server.port()) ). Try to connect now...")
+        } catch {
+            print("Server start error: \(error)")
+        }
+    }
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         //Start the web server
-        var httpServer = HTTPServer()
-        httpServer.
+        self.startWebServer()
+        
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         if let statusButton = statusItem.button {

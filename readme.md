@@ -1,3 +1,22 @@
+# TODO
+- test sending http post between VM and mac that is reliable even after reboot
+- find out how to open files with the default application from swift
+
+- make ROSE server create and then open the rdp file. See: https://github.com/hashicorp/vagrant/blob/d8fdc500b76c840cdeaa69869d0c000530b036b3/plugins/hosts/darwin/cap/rdp.rb#L12
+-----
+- make ROSE server CLI to start/stop the server
+- finish code academy on swift
+- Investigate how to package and deploy an app on choco and brew
+- make a CI server to build the ROSE app
+- make menubar UI
+
+# Use cases
+- want to use mac terminal
+- easy access to programs on windows "start menu"
+
+# Alternative solutions
+- Using RDP, open powershell as a remoteapp
+
 # Requirements
 - Windows client must have RDP services installed
 - Windows client must have registery key Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms set to 1.

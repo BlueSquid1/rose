@@ -1,9 +1,4 @@
 # TODO
-- test sending http post between VM and mac that is reliable even after reboot
-- find out how to open files with the default application from swift
-
-- make ROSE server create and then open the rdp file. See: https://github.com/hashicorp/vagrant/blob/d8fdc500b76c840cdeaa69869d0c000530b036b3/plugins/hosts/darwin/cap/rdp.rb#L12
------
 - make ROSE server CLI to start/stop the server
 - finish code academy on swift
 - Investigate how to package and deploy an app on choco and brew
@@ -37,12 +32,17 @@ Add-Content -Path $PROFILE -Value "`$env:Path += ';C:\Program Files (x86)\Micros
 ```
 then reload powershell.
 
-## To build run
+## To build
 ```
 cd client
 dotnet restore
 MSBuild.exe /property:Configuration=Release
 ```
+
 # Server
+
 ## Setup
 - Install XCode
+
+## To build
+- Build in XCode

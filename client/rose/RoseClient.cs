@@ -209,7 +209,7 @@ namespace rose
             Console.WriteLine("sent message");
             if(response.IsSuccessStatusCode == false)
             {
-                Console.WriteLine($"failed to open: {displayName} for reason: {response.ReasonPhrase}")
+                Console.WriteLine($"failed to open: {displayName} for reason: {response.ReasonPhrase}");
             }
         }
     }

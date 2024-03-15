@@ -74,7 +74,7 @@ namespace rose
                     throw new Exception($"failed to get target path from shortcut: {shortcut!}");
                 }
 
-                this.SendOpenRequest(programPath, this.config.serverIpAddress);
+                this.SendOpenRequest(requestedProgram, programPath, "", this.config.serverIpAddress);
             }
             catch(Exception e)
             {
@@ -191,11 +191,13 @@ namespace rose
             throw new Exception($"can't find program: {targetName}");
         }
 
-        private async void SendOpenRequest(string targetBinPath, string ipAddress)
+        private async void SendOpenRequest(string displayName, string targetBinPath, string arguements, string ipAddress)
         {
             RdpRequest request = new RdpRequest
             {
-                Command = targetBinPath
+                DisplayName = displayName,
+                Command = targetBinPath,
+                arguements = arguements
             };
             string requestBody = JsonConvert.SerializeObject(request);
 

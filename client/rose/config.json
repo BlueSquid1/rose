@@ -1,5 +1,5 @@
 {
-    "serverIpAddress":"192.168.50.2:8000",
+    "serverIpAddress":"192.168.50.1:8081",
     "customPrograms":[
         {"DisplayName":"File Explorer","Path":"C:\\Windows\\explorer.exe"}
     ]

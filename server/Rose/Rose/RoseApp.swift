@@ -28,9 +28,19 @@ class AppDelegate : NSObject, NSApplicationDelegate, ObservableObject {
     
     func startWebServer() {
         let server = HttpServer()
-        server["/hello"] = { .ok(.htmlBody("You asked for \($0)"))  }
+        server.POST["/request"] = { request in
+            let message = Data(request.body)
+            let decoder = JSONDecoder()
+            do {
+                let rdpRequest = try decoder.decode(RdpRequest.self, from: message)
+                print(rdpRequest.Command)
+            } catch {
+                print(error.localizedDescription)
+            }
+            return .ok(.htmlBody("ok !")) }
+        
         do{
-            try server.start(9080, forceIPv4: true)
+            try server.start(8081, forceIPv4: true)
             print("Server has started ( port = \(try server.port()) ). Try to connect now...")
         } catch {
             print("Server start error: \(error)")

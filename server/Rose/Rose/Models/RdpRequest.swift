@@ -8,5 +8,5 @@
 import Foundation
 
 struct RdpRequest : Decodable {
-    let command: String
+    let Command: String
 }

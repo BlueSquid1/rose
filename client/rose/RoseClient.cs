@@ -207,7 +207,10 @@ namespace rose
             HttpClient client = new HttpClient();
             var response = client.PostAsync($"http://{ipAddress}/request", httpContent).Result;
             Console.WriteLine("sent message");
-            Console.WriteLine(response.ToString());
+            if(response.IsSuccessStatusCode == false)
+            {
+                Console.WriteLine($"failed to open: {displayName} for reason: {response.ReasonPhrase}")
+            }
         }
     }
 }

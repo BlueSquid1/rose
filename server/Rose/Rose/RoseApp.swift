@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-import Swifter
-import Dispatch
-
 @main
 struct RoseApp: App {
     
@@ -26,30 +23,10 @@ class AppDelegate : NSObject, NSApplicationDelegate, ObservableObject {
     private var statusItem: NSStatusItem!
     private var popover: NSPopover!
     
-    func startWebServer() {
-        let server = HttpServer()
-        server.POST["/request"] = { request in
-            let message = Data(request.body)
-            let decoder = JSONDecoder()
-            do {
-                let rdpRequest = try decoder.decode(RdpRequest.self, from: message)
-                print(rdpRequest.Command)
-            } catch {
-                print(error.localizedDescription)
-            }
-            return .ok(.htmlBody("ok !")) }
-        
-        do{
-            try server.start(8081, forceIPv4: true)
-            print("Server has started ( port = \(try server.port()) ). Try to connect now...")
-        } catch {
-            print("Server start error: \(error)")
-        }
-    }
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
         //Start the web server
-        self.startWebServer()
+        let listener = HttpListener()
+        listener.startListening(port: 8081)
         
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         

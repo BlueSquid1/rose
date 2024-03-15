@@ -197,7 +197,7 @@ namespace rose
             {
                 DisplayName = displayName,
                 Command = targetBinPath,
-                arguements = arguements
+                Arguements = arguements
             };
             string requestBody = JsonConvert.SerializeObject(request);
 

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031F55152BA59CBD0038E910 /* ApplicationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031F55142BA59CBD0038E910 /* ApplicationMenu.swift */; };
 		036A5CDF2BA43B7500373825 /* RdpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A5CDE2BA43B7500373825 /* RdpManager.swift */; };
 		036A97162BA1BA410031281E /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 036A97152BA1BA410031281E /* Swifter */; };
 		036A97182BA1BA410031281E /* Example in Frameworks */ = {isa = PBXBuildFile; productRef = 036A97172BA1BA410031281E /* Example */; };
 		03A483A32BA15DAF000A28C5 /* RoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483A22BA15DAF000A28C5 /* RoseApp.swift */; };
-		03A483A52BA15DAF000A28C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483A42BA15DAF000A28C5 /* ContentView.swift */; };
 		03A483A72BA15DB1000A28C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A483A62BA15DB1000A28C5 /* Assets.xcassets */; };
 		03A483AA2BA15DB1000A28C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A483A92BA15DB1000A28C5 /* Preview Assets.xcassets */; };
 		03A483B32BA15EE2000A28C5 /* RdpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A483B22BA15EE2000A28C5 /* RdpRequest.swift */; };
@@ -19,10 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031F55142BA59CBD0038E910 /* ApplicationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMenu.swift; sourceTree = "<group>"; };
 		036A5CDE2BA43B7500373825 /* RdpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RdpManager.swift; sourceTree = "<group>"; };
 		03A4839F2BA15DAF000A28C5 /* Rose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A483A22BA15DAF000A28C5 /* RoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoseApp.swift; sourceTree = "<group>"; };
-		03A483A42BA15DAF000A28C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		03A483A62BA15DB1000A28C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03A483A92BA15DB1000A28C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03A483AB2BA15DB1000A28C5 /* Rose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rose.entitlements; sourceTree = "<group>"; };
@@ -62,14 +62,14 @@
 		03A483A12BA15DAF000A28C5 /* Rose */ = {
 			isa = PBXGroup;
 			children = (
-				03A483B42BA17227000A28C5 /* Services */,
-				03A483B12BA15EA3000A28C5 /* Models */,
 				03A483A22BA15DAF000A28C5 /* RoseApp.swift */,
-				03A483A42BA15DAF000A28C5 /* ContentView.swift */,
+				03A483B22BA15EE2000A28C5 /* RdpRequest.swift */,
+				03A483B52BA1723C000A28C5 /* HttpListener.swift */,
 				03A483A62BA15DB1000A28C5 /* Assets.xcassets */,
 				03A483AB2BA15DB1000A28C5 /* Rose.entitlements */,
 				03A483A82BA15DB1000A28C5 /* Preview Content */,
 				036A5CDE2BA43B7500373825 /* RdpManager.swift */,
+				031F55142BA59CBD0038E910 /* ApplicationMenu.swift */,
 			);
 			path = Rose;
 			sourceTree = "<group>";
@@ -80,22 +80,6 @@
 				03A483A92BA15DB1000A28C5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		03A483B12BA15EA3000A28C5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				03A483B22BA15EE2000A28C5 /* RdpRequest.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		03A483B42BA17227000A28C5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				03A483B52BA1723C000A28C5 /* HttpListener.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03A483A52BA15DAF000A28C5 /* ContentView.swift in Sources */,
+				031F55152BA59CBD0038E910 /* ApplicationMenu.swift in Sources */,
 				03A483A32BA15DAF000A28C5 /* RoseApp.swift in Sources */,
 				036A5CDF2BA43B7500373825 /* RdpManager.swift in Sources */,
 				03A483B32BA15EE2000A28C5 /* RdpRequest.swift in Sources */,
@@ -318,6 +302,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ROSE;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -346,6 +332,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ROSE;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

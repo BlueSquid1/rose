@@ -25,10 +25,9 @@ class RdpManager {
         let rdpContent = """
             remoteapplicationname:s:\(appRequest.DisplayName)
             full address:s:\(ipAddress)
-            username:s:vagrant
             prompt for credentials on client:i:0
             authentication level:i:3
-            promptcredentialonce:i:1
+            promptcredentialonce:i:0
             autoreconnection enabled:i:1
 
             redirected video capture encoding quality:i:2

@@ -9,46 +9,33 @@ import SwiftUI
 
 @main
 struct RoseApp: App {
-    
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    let listener = HttpListener()
+    
+    init() {
+        //Start the web server
+        listener.startListening(port: 8081)
+    }
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        Settings {
+            EmptyView()
         }
     }
 }
 
-class AppDelegate : NSObject, NSApplicationDelegate, ObservableObject {
-    private var statusItem: NSStatusItem!
-    private var popover: NSPopover!
+class AppDelegate : NSObject, NSApplicationDelegate {
+    static private(set) var instance: AppDelegate!
+    
+    lazy var statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    let menu = ApplicationMenu()
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        //Start the web server
-        let listener = HttpListener()
-        listener.startListening(port: 8081)
+        AppDelegate.instance = self
         
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        
-        if let statusButton = statusItem.button {
-            statusButton.image = NSImage(systemSymbolName: "chart.line.uptrend.xyaxis.circle", accessibilityDescription: "RDP server listener")
-            statusButton.action = #selector(togglePopup)
-        }
-        
-        self.popover = NSPopover()
-        self.popover.contentSize = NSSize(width: 300, height: 300)
-        // Will disapper if you click somewhere else
-        self.popover.behavior = .transient
-        self.popover.contentViewController = NSHostingController(rootView: ContentView())
-    }
-    
-    @objc func togglePopup() {
-        if let button = statusItem.button {
-            if popover.isShown {
-                self.popover.performClose(nil)
-            } else {
-                popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-            }
-        }
+        statusBarItem.button?.image = NSImage(named: NSImage.Name("rose"))
+        statusBarItem.button?.imagePosition = .imageLeading
+        statusBarItem.menu = menu.createMenu()
     }
 }

@@ -1,9 +1,11 @@
 # TODO
+- update win-start script to start rose server
+- add rose client to environment variables
+- ssh keys
+-----
 - make ROSE server CLI to start/stop the server
-- finish code academy on swift
 - Investigate how to package and deploy an app on choco and brew
 - make a CI server to build the ROSE app
-- make menubar UI
 
 # Use cases
 - want to use mac terminal

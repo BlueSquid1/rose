@@ -13,7 +13,7 @@ class ApplicationMenu: NSObject {
     let menu = NSMenu()
     
     func createMenu() -> NSMenu {
-        let aboutMenuItem = NSMenuItem(title: "About ROSE", action: #selector(about), keyEquivalent: "")
+        let aboutMenuItem = NSMenuItem(title: "About Rose", action: #selector(about), keyEquivalent: "")
         aboutMenuItem.target = self
         menu.addItem(aboutMenuItem)
         

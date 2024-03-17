@@ -54,8 +54,6 @@ namespace rose
             {
                 availablePrograms.Add(custProgram.DisplayName);
             }
-            
-            Console.WriteLine(availablePrograms);
             return availablePrograms;
         }
 
@@ -109,21 +107,18 @@ namespace rose
             if(keyValue == null)
             {
                 return false;
-                throw new Exception(@"new to create key: SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms and set it to 1");
             }
 
             if ( key.GetValueKind("fAllowUnlistedRemotePrograms") != RegistryValueKind.DWord )
             {
                 key.Close();
                 return false;
-                throw new Exception(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms has the wrong type. Should be DWord");
             }
 
             if (keyValue.ToString() != "1")
             {
                 key.Close();
                 return false;
-                throw new Exception(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms needs to be set to 1");
             }
             key.Close();
             return true;
@@ -217,7 +212,7 @@ namespace rose
             throw new Exception($"can't find program: {targetName}");
         }
 
-        private async void SendOpenRequest(string displayName, string targetBinPath, string arguements, string ipAddress)
+        private void SendOpenRequest(string displayName, string targetBinPath, string arguements, string ipAddress)
         {
             RdpRequest request = new RdpRequest
             {
@@ -231,7 +226,7 @@ namespace rose
 
             Console.WriteLine("sending message");
             HttpClient client = new HttpClient();
-            var response = await client.PostAsync($"http://{ipAddress}/request", httpContent);
+            var response = client.PostAsync($"http://{ipAddress}/request", httpContent).Result;
             Console.WriteLine("sent message");
             if(response.IsSuccessStatusCode == false)
             {

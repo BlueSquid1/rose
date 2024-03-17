@@ -54,6 +54,8 @@ namespace rose
             {
                 availablePrograms.Add(custProgram.DisplayName);
             }
+            
+            Console.WriteLine(availablePrograms);
             return availablePrograms;
         }
 
@@ -61,7 +63,10 @@ namespace rose
         {
             try
             {
-                this.StartupChecks();
+                if(this.AllowRdpCheck() == false)
+                {
+                    this.EnableRdpRegEdit();
+                }
 
                 List<string> availablePrograms = this.ListAvailableShortcuts();
 
@@ -92,25 +97,46 @@ namespace rose
             }
             return (Config)config;
         }
-        private void StartupChecks()
+        private bool AllowRdpCheck()
         {
             RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services", false);
             if(key == null)
             {
-                throw new Exception(@"can't find key: SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services");
+                return false;
             }
 
             object? keyValue = key.GetValue("fAllowUnlistedRemotePrograms");
             if(keyValue == null)
             {
+                return false;
                 throw new Exception(@"new to create key: SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms and set it to 1");
+            }
+
+            if ( key.GetValueKind("fAllowUnlistedRemotePrograms") != RegistryValueKind.DWord )
+            {
+                key.Close();
+                return false;
+                throw new Exception(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms has the wrong type. Should be DWord");
             }
 
             if (keyValue.ToString() != "1")
             {
                 key.Close();
+                return false;
                 throw new Exception(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms needs to be set to 1");
             }
+            key.Close();
+            return true;
+        }
+
+        private void EnableRdpRegEdit()
+        {
+            RegistryKey? key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services", true);
+            if(key == null)
+            {
+                throw new Exception(@"can't find key: SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services");
+            }
+            key.SetValue("fAllowUnlistedRemotePrograms", 1, RegistryValueKind.DWord);
             key.Close();
         }
 
@@ -165,7 +191,7 @@ namespace rose
 
                 return result;
             }
-            catch(System.UnauthorizedAccessException e)
+            catch(System.UnauthorizedAccessException)
             {
                 return null;
             }
@@ -205,7 +231,7 @@ namespace rose
 
             Console.WriteLine("sending message");
             HttpClient client = new HttpClient();
-            var response = client.PostAsync($"http://{ipAddress}/request", httpContent).Result;
+            var response = await client.PostAsync($"http://{ipAddress}/request", httpContent);
             Console.WriteLine("sent message");
             if(response.IsSuccessStatusCode == false)
             {

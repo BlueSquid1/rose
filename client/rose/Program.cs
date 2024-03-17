@@ -22,11 +22,18 @@ namespace rose
             {
                 RoseClient client = new RoseClient(config!);
                 List<string> availablePrograms = client.ListAvailableShortcuts();
+                List<string> displayNames = new List<string>();
                 foreach(string program in availablePrograms)
                 {
                     string displayName = System.IO.Path.GetFileNameWithoutExtension(program);
+                    displayNames.Add(displayName);
+                }
+                displayNames.Sort();
+                foreach(string displayName in displayNames)
+                {
                     Console.WriteLine(displayName);
                 }
+
                 Console.WriteLine("");
                 Console.WriteLine("----------------------------");
                 Console.WriteLine($"Num of programs detected: {availablePrograms.Count}");

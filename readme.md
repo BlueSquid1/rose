@@ -13,8 +13,8 @@
 - Using RDP, open powershell as a remoteapp
 
 # Requirements
-- Windows client must have RDP services installed
 - Windows client must have registery key Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fAllowUnlistedRemotePrograms set to 1.
+- Windows client must have TermService service started (auto starts by default).
 
 # Client
 ## Setup

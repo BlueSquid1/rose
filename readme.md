@@ -29,6 +29,7 @@ choco install visualstudio2022buildtools
 # Install .NET Framework 4.7.2 SDK, .NET SDK and .NET 8.0 Runtime (Long Term Support)
 & 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe' modify --installPath "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools" --config ".\client\rose.vsconfig" --quiet
 Add-Content -Path $PROFILE -Value "`$env:Path += ';C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin'"
+Add-Content -Path $PROFILE -Value "`$env:Path += ';C:\Program Files\dotnet\'"
 ```
 then reload powershell.
 
